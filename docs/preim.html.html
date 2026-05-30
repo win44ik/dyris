@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Турбочист - Преимущества</title>
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ХЕДЕР  -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="лого с свечен.png" alt="ТурбоЧист">
+                <span>ТурбоЧист</span>
+            </div>
+            
+            <nav>
+                <a href="glavnaya.html">Главная</a>
+                <a href="uslugi.html">Услуги</a>
+                <a href="cen.html">Цены</a>
+                <a href="preim.html">Преимущества</a>
+                <a href="mest.html">Местонахождение</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="frame">
+        <h1 class="title">ПОЧЕМУ ТУРБОЧИСТ?</h1>
+
+        <div class="cards-grid" id="advantages">
+
+            <!-- Карточка 1: Круглосуточно -->
+            <div class="card" data-index="0">
+                <div class="card-icon">
+                    <img src="часы.jpg" alt="Круглосуточно">
+                </div>
+                <h3>Круглосуточно</h3>
+                <p>Работа 24/7 без выходных</p>
+            </div>
+
+            <!-- Карточка 2: Самые низкие цены -->
+            <div class="card" data-index="1">
+                <div class="card-icon">
+                    <img src="монеты.jpg" alt="Низкие цены">
+                </div>
+                <h3>Самые низкие цены</h3>
+                <p>Экономия до 50% по сравнению с другими мойками</p>
+            </div>
+
+            <!-- Карточка 3: Комбо-услуга -->
+            <div class="card" data-index="2">
+                <div class="card-icon">
+                    <img src="машина.jpg" alt="Комбо услуга">
+                </div>
+                <h3>Комбо-услуга</h3>
+                <p>Заправка + мойка в одном месте — экономия времени</p>
+            </div>
+
+            <!-- Карточка 4: Удобное расположение -->
+            <div class="card" data-index="3">
+                <div class="card-icon">
+                    <img src="карта.jpg" alt="Расположение">
+                </div>
+                <h3>Удобное расположение</h3>
+                <p>На въезде в Барань, вид с трассы М8</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Данные для каждого блока
+        const modalData = [
+            {
+                icon: "🕒",
+                title: "Круглосуточно 24/7",
+                description: "Наша автомойка работает без выходных и праздников. Приезжайте в любое время суток — мы всегда готовы качественно помыть ваш автомобиль. Даже в 3 часа ночи!",
+                detail: "⏰ Ночной тариф с 23:00 до 06:00 — дополнительная скидка 10%"
+            },
+            {
+                icon: "💰",
+                title: "Самые низкие цены",
+                description: "Мы предлагаем лучшие цены в регионе. Экономия до 50% по сравнению с конкурентами достигается за счет собственной химчистки и прямых поставок расходных материалов.",
+                detail: "🏆 Гарантия лучшей цены — если найдёте дешевле, сделаем скидку ещё 5%"
+            },
+            {
+                icon: "⛽🧼",
+                title: "Комбо-услуга",
+                description: "Заправьтесь и помойте машину, не тратя время на переезды. У нас на территории есть АЗС с качественным топливом. Заправка + мойка = 15 минут вместо часа!",
+                detail: "🎁 При комплексной услуге (заправка + мойка) — кофе в подарок"
+            },
+            {
+                icon: "📍",
+                title: "Удобное расположение",
+                description: "Мы находимся прямо на въезде в Барань (Оршанский район), с видом на трассу М8. Вас видно с дороги за 500 метров — удобно заезжать по пути в Минск, Витебск или Оршу.",
+                detail: "🅿️ Бесплатная парковка на время мойки + Wi-Fi в зоне ожидания"
+            }
+        ];
+
+        // Создаём модальное окно
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.id = 'infoModal';
+        modal.innerHTML = '<div class="modal-content">' +
+            '<div class="modal-close">&times;</div>' +
+            '<div class="modal-inner">' +
+            '<div class="modal-icon"></div>' +
+            '<h2 class="modal-title"></h2>' +
+            '<p class="modal-description"></p>' +
+            '<div class="modal-detail"></div>' +
+            '<button class="modal-button">Закрыть</button>' +
+            '</div>' +
+            '</div>';
+        document.body.appendChild(modal);
+
+        // Элементы модального окна
+        const modalIcon = modal.querySelector('.modal-icon');
+        const modalTitle = modal.querySelector('.modal-title');
+        const modalDesc = modal.querySelector('.modal-description');
+        const modalDetail = modal.querySelector('.modal-detail');
+        const closeBtn = modal.querySelector('.modal-close');
+        const modalButton = modal.querySelector('.modal-button');
+
+        // Функция открытия
+        function openModal(index) {
+            const data = modalData[index];
+            if (data) {
+                modalIcon.textContent = data.icon;
+                modalTitle.textContent = data.title;
+                modalDesc.textContent = data.description;
+                if (modalDetail) modalDetail.textContent = data.detail || '';
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Функция закрытия
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Навешиваем обработчики на все карточки
+        const cards = document.querySelectorAll('#advantages .card');
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].addEventListener('click', (function(index) {
+                return function() {
+                    openModal(index);
+                };
+            })(i));
+        }
+
+        // Закрытие по крестику
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        
+        // Закрытие по кнопке
+        if (modalButton) modalButton.addEventListener('click', closeModal);
+
+        // Закрытие по клику на фон
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+    </script>
+    <!-- ФУТЕР -->
+<footer class="footer">
+    <div class="footer-bg"></div>
+    <div class="footer-content">
+        <div class="footer-contacts">
+            <h4 class="footer-title">Контакты</h4>
+            <p class="footer-phone">Телефон: +375 (29) 761-94-26</p>
+            <p class="footer-email">Email: info@turbochist.by</p>
+            <p class="footer-address">Адрес: трасса М8, въезд в Барань, Оршанский район</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/hidingfrombills" target="_blank" class="social-icon">
+                    <img src="icons/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://t.me/sarrikkiskispics" target="_blank" class="social-icon">
+                    <img src="icons/telegram.png" alt="Telegram">
+                </a>
+                <a href="https://vk.com/neyourmamy" target="_blank" class="social-icon">
+                    <img src="icons/vk.png" alt="ВКонтакте">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>© 2026 ТурбоЧист. Все права защищены.</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Турбочист - Местонахождение</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-location.css">
+</head>
+<body>
+<!-- ХЕДЕР  -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="лого с свечен.png" alt="ТурбоЧист">
+                <span>ТурбоЧист</span>
+            </div>
+            
+            <nav>
+                <a href="glavnaya.html">Главная</a>
+                <a href="uslugi.html">Услуги</a>
+                <a href="cen.html">Цены</a>
+                <a href="preim.html">Преимущества</a>
+                <a href="mest.html">Местонахождение</a>
+            </nav>
+        </div>
+    </header>
+
+<main class="location-page">
+    <h1>ГДЕ МЫ НАХОДИМСЯ</h1>
+
+    <!-- КАРТА -->
+    <div class="map-wrapper">
+        <iframe 
+            src="https://yandex.by/map-widget/v1/?from=api-maps&ll=30.290341%2C54.474233&origin=jsapi_2_1_79&pt=30.285%2C54.4745&utm_source=jsapi&z=15.92"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="map-button">
+        <a href="https://yandex.by/maps/-/CPHEqFz-" target="_blank" class="map-btn">Открыть в Яндекс Картах</a>
+    </div>
+    
+    <div class="two-columns">
+        <!-- ЛЕВАЯ КОЛОНКА: РЕЖИМ РАБОТЫ -->
+        <div class="work-hours-col" data-modal="hours">
+            <div class="status">
+                <span class="status-dot"></span>
+                <span class="status-text">Сейчас открыто</span>
+            </div>
+            <div class="hours-main">Круглосуточно · 24/7</div>
+            <div class="hours-days">Без выходных и праздников</div>
+        </div>
+        
+        <!-- ПРАВАЯ КОЛОНКА: КАК ДОБРАТЬСЯ -->
+        <div class="how-to-get-col">
+            <h3>Как добраться?</h3>
+            <ul class="how-to-list">
+                <li class="how-to-item" data-modal="car">На машине</li>
+                <li class="how-to-item" data-modal="truck">На грузовом транспорте</li>
+                <li class="how-to-item" data-modal="gas">С заправки</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="two-columns-bottom">
+        <!-- ЛЕВАЯ КОЛОНКА: КООРДИНАТЫ -->
+        <div class="coordinates-col">
+            <h2>Координаты для навигатора</h2>
+            <div class="coordinates-box">
+                <div class="coords">54.474233, 30.290341</div>
+                <button class="copy-btn" id="copyCoordsBtn">Скопировать</button>
+            </div>
+            <p class="coords-hint">Вставьте в Яндекс.Навигатор или Google Maps</p>
+        </div>
+        
+        <!-- ПРАВАЯ КОЛОНКА: ЧАСЫ ПИК -->
+        <div class="peak-hours-col">
+            <h2>Часы пик</h2>
+            <div class="peak-hours-grid">
+                <div class="peak-card">
+                    <div class="peak-time">7:00 — 9:00</div>
+                    <div class="peak-traffic">Мало машин</div>
+                </div>
+                <div class="peak-card">
+                    <div class="peak-time">12:00 — 14:00</div>
+                    <div class="peak-traffic">Обеденная нагрузка</div>
+                </div>
+                <div class="peak-card">
+                    <div class="peak-time">17:00 — 19:00</div>
+                    <div class="peak-traffic">Много машин</div>
+                </div>
+                <div class="peak-card">
+                    <div class="peak-time">21:00 — 23:00</div>
+                    <div class="peak-traffic">Свободно</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- МОДАЛЬНОЕ ОКНО -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2 class="modal-title"></h2>
+        <p class="modal-description"></p>
+        <button class="modal-btn">Закрыть</button>
+    </div>
+</div>
+
+<script>
+    const modalData = {
+        car: {
+            title: "На машине",
+            description: "С трассы М8 поверните на Барань сразу после АЗС 'Белнефть'. Мы находимся в 500 метрах от поворота, справа от дороги. Вывеска 'ТурбоЧист' видна за километр. Есть удобный заезд и бесплатная парковка."
+        },
+        truck: {
+            title: "На грузовом транспорте",
+            description: "У нас есть отдельный пост для грузовых машин. Заезд широкий, есть место для разворота. Мойка фур, автобусов и спецтехники — по предварительной записи. Звоните: +375 (29) 761-94-26."
+        },
+        gas: {
+            title: "С заправки",
+            description: "Заправляетесь на АЗС 'Белнефть'? Мы находимся в 100 метрах. Заправка + мойка = 15 минут. При предъявлении чека с АЗС — скидка 5% на мойку."
+        },
+        hours: {
+            title: "Режим работы",
+            description: "Работаем круглосуточно, 7 дней в неделю, без выходных и праздников. Ночной тариф с 23:00 до 06:00 — скидка 10%."
+        }
+    };
+
+    const modal = document.getElementById('modal');
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalDesc = modal.querySelector('.modal-description');
+    const closeBtn = modal.querySelector('.modal-close');
+    const modalBtn = modal.querySelector('.modal-btn');
+
+    function openModal(id) {
+        const data = modalData[id];
+        if (data) {
+            modalTitle.textContent = data.title;
+            modalDesc.textContent = data.description;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.work-hours-col, .how-to-item').forEach(el => {
+        el.addEventListener('click', function() {
+            const id = this.getAttribute('data-modal');
+            if (id) openModal(id);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+    });
+
+    const copyBtn = document.getElementById('copyCoordsBtn');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', function() {
+            const coords = '54.474233, 30.290341';
+            navigator.clipboard.writeText(coords).then(() => {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Скопировано!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            });
+        });
+    }
+</script>
+<!-- ФУТЕР -->
+<footer class="footer">
+    <div class="footer-bg"></div>
+    <div class="footer-content">
+        <div class="footer-contacts">
+            <h4 class="footer-title">Контакты</h4>
+            <p class="footer-phone">Телефон: +375 (29) 761-94-26</p>
+            <p class="footer-email">Email: info@turbochist.by</p>
+            <p class="footer-address">Адрес: трасса М8, въезд в Барань, Оршанский район</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/hidingfrombills" target="_blank" class="social-icon">
+                    <img src="icons/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://t.me/sarrikkiskispics" target="_blank" class="social-icon">
+                    <img src="icons/telegram.png" alt="Telegram">
+                </a>
+                <a href="https://vk.com/neyourmamy" target="_blank" class="social-icon">
+                    <img src="icons/vk.png" alt="ВКонтакте">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>© 2026 ТурбоЧист. Все права защищены.</p>
+    </div>
+</footer>
+</body>
+</html>
