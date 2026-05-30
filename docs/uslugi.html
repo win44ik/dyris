@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>ТурбоЧист — Наши услуги</title>
+    <meta name="description" content="Автомойка самообслуживания, заправка, кафе, магазин, аренда пылесоса и клубные карты">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="uslugi_style.css">
+</head>
+<body>
+
+    <!-- ХЕДЕР (полностью как на главной, без скролл-эффекта) -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="лого с свечен.png" alt="ТурбоЧист">
+                <span>ТурбоЧист</span>
+            </div>
+            
+            <nav>
+                <a href="glavnaya.html">Главная</a>
+                <a href="uslugi.html">Услуги</a>
+                <a href="cen.html">Цены</a>
+                <a href="preim.html">Преимущества</a>
+                <a href="mest.html">Местонахождение</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ФОНОВЫЕ ЭЛЕМЕНТЫ -->
+    <div class="background"></div>
+    <div class="bubbles"></div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="container">
+        <h3 class="section-title">НАШИ УСЛУГИ</h3>
+
+        <div class="cards">
+            <div class="card" onclick="openModal('wash')">
+                <img class="photo" src="мойка.png" alt="Автомойка">
+                <div class="card-content">
+                    <img class="card-icon" src="icon_wash.png" alt="">
+                    <div class="text">Автомойка<br>самообслуживания</div>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('fuel')">
+                <img class="photo" src="заправка.png" alt="Заправка">
+                <div class="card-content">
+                    <img class="card-icon" src="icon_fuel.png" alt="">
+                    <div class="text">Заправка<br>автомобиля</div>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('cafe')">
+                <img class="photo" src="кафе.png" alt="Кафе">
+                <div class="card-content">
+                    <img class="card-icon" src="icon_cafe.png" alt="">
+                    <div class="text">Круглосуточное<br>кафе</div>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('tire')">
+                <img class="photo" src="шины.png" alt="Шины">
+                <div class="card-content">
+                    <img class="card-icon" src="icon_tire.png" alt="">
+                    <div class="text">Станция подкачки<br>шин</div>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('shop')">
+                <img class="photo" src="магазин.png" alt="Магазин">
+                <div class="card-content">
+                    <img class="card-icon" src="icon_shop.png" alt="">
+                    <div class="text">Круглосуточный<br>магазин</div>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('vacuum')">
+                <img class="photo" src="пылесос.png" alt="Аренда пылесоса">
+                <div class="card-content">
+                    <img class="card-icon" src="icon_vacuum.png" alt="">
+                    <div class="text">Аренда<br>пылесоса</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title">ПОПУЛЯРНЫЕ УСЛУГИ</h3>
+
+        <div class="popular-section">
+            <div class="popular-cards">
+                <div class="popular-card" onclick="openModal('wash')">
+                    <img class="photo" src="мойка.png" alt="Комплексная мойка">
+                    <div class="popular-card-content">
+                        <h4>Комплексная мойка</h4>
+                        <p>Пена + воск + сушка + ополаскивание</p>
+                        <div class="price">от 15 BYN</div>
+                    </div>
+                </div>
+                <div class="popular-card" onclick="openModal('fuel')">
+                    <img class="photo" src="заправка.png" alt="Скидка на топливо">
+                    <div class="popular-card-content">
+                        <h4>Скидка 30% по карте клиента</h4>
+                        <p>На весь топливный ряд для держателей карт</p>
+                        <div class="price">Только по карте</div>
+                    </div>
+                </div>
+                <div class="popular-card" onclick="openModal('vacuum')">
+                    <img class="photo" src="пылесос.png" alt="Химчистка салона">
+                    <div class="popular-card-content">
+                        <h4>Химчистка салона</h4>
+                        <p>Глубокая очистка с пылесосом</p>
+                        <div class="price">25 BYN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-title">КЛУБНАЯ КАРТА ТУРБОЧИСТ</h3>
+
+        <div class="clubcards-section">
+            <div class="clubcards-grid">
+                <div class="clubcard-item" onclick="alert('Свяжитесь с нами для оформления карты: +375 (29) 761-94-26')">
+                    <div class="clubcard-photo">
+                        <img src="clubcard.png" alt="Карта 25 BYN" onerror="this.src='https://placehold.co/400x220/FF7121/white?text=Карта+25+BYN'">
+                    </div>
+                    <div class="clubcard-info">
+                        <h3>Стандарт</h3>
+                        <div class="clubcard-price">25 BYN <span>/ год</span></div>
+                        <ul>
+                            <li>Накопительные бонусы до 5%</li>
+                            <li>Скидка 10% на мойку</li>
+                            <li>Бесплатная подкачка шин</li>
+                        </ul>
+                        <button class="clubcard-order">Оформить</button>
+                    </div>
+                </div>
+                <div class="clubcard-item premium" onclick="alert('Свяжитесь с нами для оформления карты: +375 (29) 761-94-26')">
+                    <div class="premium-badge">Лучший выбор</div>
+                    <div class="clubcard-photo">
+                        <img src="clubcard.png" alt="Карта 50 BYN" onerror="this.src='https://placehold.co/400x220/FFD700/black?text=Карта+50+BYN'">
+                    </div>
+                    <div class="clubcard-info">
+                        <h3>Премиум</h3>
+                        <div class="clubcard-price">50 BYN <span>/ год</span></div>
+                        <ul>
+                            <li>Накопительные бонусы до 15%</li>
+                            <li>Скидка 25% на все услуги</li>
+                            <li>Приоритетное обслуживание</li>
+                            <li>Бесплатная химчистка салона 1 раз в год</li>
+                            <li>Подарок на день рождения</li>
+                        </ul>
+                        <button class="clubcard-order">Оформить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div id="instructionModal" class="modal" onclick="closeModalOnBackground(event)">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+<!-- ФУТЕР -->
+<footer class="footer">
+    <div class="footer-bg"></div>
+    <div class="footer-content">
+        <div class="footer-contacts">
+            <h4 class="footer-title">Контакты</h4>
+            <p class="footer-phone">Телефон: +375 (29) 761-94-26</p>
+            <p class="footer-email">Email: info@turbochist.by</p>
+            <p class="footer-address">Адрес: трасса М8, въезд в Барань, Оршанский район</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/hidingfrombills" target="_blank" class="social-icon">
+                    <img src="icons/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://t.me/sarrikkiskispics" target="_blank" class="social-icon">
+                    <img src="icons/telegram.png" alt="Telegram">
+                </a>
+                <a href="https://vk.com/neyourmamy" target="_blank" class="social-icon">
+                    <img src="icons/vk.png" alt="ВКонтакте">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>© 2026 ТурбоЧист. Все права защищены.</p>
+    </div>
+</footer>
+
+    <script>
+        // ДАННЫЕ ДЛЯ ВСЕХ УСЛУГ
+        const serviceData = {
+            wash: {
+                title: "Автомойка самообслуживания",
+                options: ["Основная мойка", "Активная пена", "Ополаскивание", "Горячий воск", "Блеск + сушка"],
+                instructions: [
+                    "1. Нанесите активную пену на сухой автомобиль",
+                    "2. Подождите 1-2 минуты, чтобы пена размягчила грязь",
+                    "3. Смойте пену водой под давлением (ополаскивание)",
+                    "4. Нанесите горячий воск для защиты кузова",
+                    "5. Используйте блеск + сушку для идеального результата"
+                ]
+            },
+            fuel: {
+                title: "Заправка автомобиля",
+                options: [
+                    "Бензин АИ-92 — 2,57 BYN/литр",
+                    "Бензин АИ-95 — 2,67 BYN/литр",
+                    "Бензин АИ-98 — 2,89 BYN/литр",
+                    "Дизель ДТ — 2,67 BYN/литр",
+                    "Газ пропан — 1,34 BYN/литр",
+                    "Газ метан — 1,12 BYN/литр",
+                    "Медленная зарядка (АС) — 0,46 BYN/кВт·ч",
+                    "Быстрая зарядка (АС) — 0,61 BYN/кВт·ч"
+                ],
+                instructions: [
+                    "1. Остановитесь у нужной колонки",
+                    "2. Заглушите двигатель",
+                    "3. Откройте лючок бензобака",
+                    "4. Выберите вид топлива на колонке",
+                    "5. Вставьте пистолет и нажмите на рычаг",
+                    "6. После отсечки подождите 5 секунд и достаньте пистолет"
+                ]
+            },
+            cafe: {
+                title: "Круглосуточное кафе",
+                options: ["Горячие напитки", "Сэндвичи и бургеры", "Горячие блюда", "Десерты", "Напитки"],
+                instructions: [
+                    "1. Подойдите к кассе",
+                    "2. Выберите блюда из меню",
+                    "3. Оплатите заказ",
+                    "4. Получите ваш заказ",
+                    "5. Приятного аппетита!"
+                ]
+            },
+            tire: {
+                title: "Станция подкачки шин",
+                options: ["Воздух для шин", "Проверка давления"],
+                instructions: [
+                    "1. Припаркуйтесь рядом со станцией",
+                    "2. Открутите колпачки на ниппелях",
+                    "3. Подключите шланг к ниппелю",
+                    "4. Установите нужное давление (2.0-2.5 атм)",
+                    "5. Нажмите кнопку подкачки",
+                    "6. Отсоедините шланг и закрутите колпачки"
+                ]
+            },
+            shop: {
+                title: "Круглосуточный магазин",
+                options: ["Напитки", "Снеки", "Автоаксессуары", "Масла и жидкости", "Средства для авто"],
+                instructions: [
+                    "1. Зайдите в магазин",
+                    "2. Выберите необходимые товары",
+                    "3. Подойдите к кассе",
+                    "4. Оплатите покупку",
+                    "5. Получите чек и товары"
+                ]
+            },
+            vacuum: {
+                title: "Аренда пылесоса",
+                options: ["Пылесос для салона", "Турбощётка", "Узкая насадка"],
+                instructions: [
+                    "1. Оплатите время работы на терминале",
+                    "2. Возьмите пылесос с катушки",
+                    "3. Выберите нужную насадку",
+                    "4. Пропылесосьте коврики и сиденья",
+                    "5. Пройдитесь узкой насадкой в труднодоступных местах",
+                    "6. Верните пылесос на место"
+                ]
+            }
+        };
+
+        function openModal(service) {
+            const data = serviceData[service];
+            if (!data) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <h2>${data.title}</h2>
+                <h3>Виды услуг:</h3>
+                <ul>
+                    ${data.options.map(opt => `<li>${opt}</li>`).join('')}
+                </ul>
+                <h3>Инструкция:</h3>
+                ${data.instructions.map(step => `<div class="instruction-step">${step}</div>`).join('')}
+            `;
+            
+            document.getElementById('instructionModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('instructionModal').style.display = 'none';
+        }
+
+        function closeModalOnBackground(event) {
+            if (event.target === document.getElementById('instructionModal')) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
